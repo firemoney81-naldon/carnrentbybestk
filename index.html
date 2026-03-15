@@ -1,23 +1,412 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <title>Home</title>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <!--
-      Need a visual blank slate?
-      Remove all code in `styles.css`!
-    -->
-    <link rel="stylesheet" href="styles.css" />
-    <script type="module" src="script.js"></script>
-  </head>
-  <body>
-    <nav>
-      <a href="/" aria-current="page">Home</a>
-      <a href="/page2.html">Other page</a>
+
+
+  <!-- Schema.org LocalBusiness 마크업(JSON-LD) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "AutoDealer",
+    "name": "포터 리스 비교 전문 서비스",
+    "image": "https://도메인/포터리스로고.png",
+    "url": "https://도메인/포터리스",
+    "telephone": "051-123-4567",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "부산광역시 OO구 OO로 OO",
+      "addressLocality": "부산시",
+      "addressRegion": "부산",
+      "postalCode": "46000",
+      "addressCountry": "KR"
+    },
+    "areaServed": {
+      "@type": "City",
+      "name": "전국"
+    },
+    "priceRange": "₩₩₩",
+    "description": "2026년 포터2, 포터 전기차 리스 및 렌탈 전문 비교 플랫폼. 신차, 중고차 견적, 가격 비교, 장단점 분석, 할인 혜택, 현금 지원 정보 제공."
+  }
+  </script>
+
+  <!-- Google Fonts: Noto Sans KR -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+
+  <style>
+    /* Noto Sans KR 폰트 적용 및 기본 스타일 설정 */
+    body { font-family: 'Noto Sans KR', sans-serif; margin:0; padding:0; background:#f5ffef; color:#333; line-height:1.7; }
+    header { background:#ffffff; border-bottom:1px solid #e0e6ec; padding:40px 20px; text-align:center; box-shadow:0 2px 5px rgba(0,0,0,0.05); }
+    main { max-width:1000px; margin:20px auto; padding:20px; background:#ffffff; border-radius:12px; box-shadow:0 4px 12px rgba(0,0,0,0.05); }
+    section { margin-bottom:40px; padding:20px; border-radius:8px; background:#ffffff; }
+    h1 { font-size:2.8rem; font-weight:700; color:#1a5a1f; margin-top:0; margin-bottom:15px; }
+    h2 { font-size:2.2rem; border-bottom:2px solid #a3c4a3; padding-bottom:10px; font-weight:600; color:#1a5a1f; margin-top:25px; }
+    h3 { font-size:1.6rem; color:#333; border-left:4px solid #4CAF50; padding-left:10px; margin-top:25px; font-weight:500; }
+    p, li, td, th { font-size:1.05rem; line-height:1.7; }
+    ul, ol { padding-left:25px; margin-top:10px; }
+    li { margin-bottom:8px; }
+    table { width:100%; border-collapse: collapse; margin:20px 0; font-size:1rem; }
+    th, td { border:1px solid #dddddd; padding:15px; text-align:left; vertical-align:top; }
+    th { background:#eef5ee; color:#333; font-weight:600; }
+    a { color:#1a5a1f; text-decoration:none; transition: color 0.3s; }
+    a:hover { text-decoration:underline; color:#0e4012; }
+    .btn-cta {
+      display:inline-block;
+      padding:15px 35px;
+      background:#4CAF50; /* Green theme */
+      color:#fff;
+      font-weight:700;
+      border:none;
+      border-radius:30px;
+      box-shadow:0 6px 10px rgba(76, 175, 80, 0.3);
+      transition: background-color 0.3s ease, transform 0.2s ease;
+      text-decoration:none;
+      text-align:center;
+      margin-top:20px;
+    }
+    .btn-cta:hover { background:#388E3C; transform:translateY(-2px); }
+    .anchor { display:block; position:relative; top:-100px; visibility:hidden; }
+    .highlight { background-color: #f1f8e8; padding:15px; border-left:5px solid #81C784; margin:20px 0; border-radius:6px; }
+    .sub-section { padding:20px; border:1px solid #e0e6ec; border-radius:8px; margin-top:20px; }
+    .form-group { margin-bottom:15px; }
+    .form-group label { display:block; font-weight:500; margin-bottom:5px; color:#555; }
+    .form-group input, .form-group select, .form-group textarea {
+      width:100%; padding:12px; border:1px solid #ccddee; border-radius:6px; box-sizing:border-box;
+      font-size:1rem; color:#333;
+    }
+    footer { text-align:center; padding:20px; background:#eef5ee; margin-top:30px; border-top:1px solid #e0e6ec; }
+    .image-container { text-align: center; margin-bottom: 20px; }
+    .image-container img { max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
+
+    /* 반응형 디자인 */
+    @media(max-width:768px) {
+      body { padding:10px; }
+      header { padding:30px 10px; }
+      main { margin:10px auto; padding:15px; }
+      h1 { font-size:2.2rem; }
+      h2 { font-size:1.8rem; }
+      h3 { font-size:1.4rem; }
+      p, li, td, th { font-size:0.95rem; line-height:1.6; }
+      .btn-cta { width:100%; padding:15px 0; }
+      .form-group input, .form-group select, .form-group textarea { padding:10px; }
+      th, td { padding:10px; }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>포터리스(Porter Lease) 가격 비교 및 견적 추천: 2026년 최저가 솔루션</h1>
+    <p>포터2 신차, 포터 전기차, 냉동탑차 등 <span style="font-weight:bold; color:#4CAF50;">포터리스</span> 전문 비교 플랫폼. 사업자에게 유리한 조건과 <span style="font-weight:bold; color:#4CAF50;">현금 지원</span> 혜택을 찾아드립니다.</p>
+    <a class="btn-cta" href="#contact">지금 바로 포터리스 견적 문의하기</a>
+  </header>
+
+  <main>
+    <nav aria-label="페이지 내 이동">
+      <ul style="list-style-type:none; padding:0; display:flex; flex-wrap:wrap; justify-content:center; gap:10px; margin-bottom:30px;">
+        <li><a href="#need" class="btn-cta" style="background:#f0f4f0; color:#333; box-shadow:none; padding:10px 20px;">포터리스의 필요성</a></li>
+        <li><a href="#models" class="btn-cta" style="background:#f0f4f0; color:#333; box-shadow:none; padding:10px 20px;">모델별 가격 및 비교</a></li>
+        <li><a href="#finance" class="btn-cta" style="background:#f0f4f0; color:#333; box-shadow:none; padding:10px 20px;">리스 VS 렌탈 VS 할부</a></li>
+        <li><a href="#pros_cons" class="btn-cta" style="background:#f0f4f0; color:#333; box-shadow:none; padding:10px 20px;">포터리스 장단점 분석</a></li>
+        <li><a href="#review" class="btn-cta" style="background:#f0f4f0; color:#333; box-shadow:none; padding:10px 20px;">내돈내산 후기 및 팁</a></li>
+        <li><a href="#contact" class="btn-cta" style="background:#f0f4f0; color:#333; box-shadow:none; padding:10px 20px;">견적 문의</a></li>
+      </ul>
     </nav>
-    <main>
-      <h1>Home page</h1>
-    </main>
-  </body>
-</html>
+
+    <section id="introduction">
+      <span id="need" class="anchor"></span>
+      <h2><span style="color:#1a5a1f;">포터리스</span>, 왜 선택해야 할까요? 2026년 소상공인 최적의 선택</h2>
+      <p>물류와 운송이 핵심인 2026년 비즈니스 환경에서 <span style="font-weight:bold; color:#4CAF50;">포터2</span>는 소상공인과 중소기업의 필수 차량입니다. 하지만 신차 구매 시 초기 비용 부담, 복잡한 세금 문제, 감가상각으로 인한 자산 가치 하락 등 여러 고민이 따릅니다. <span style="font-weight:bold; color:#4CAF50;">포터리스</span>는 이러한 고민을 해결하고 비용 효율성을 극대화하는 새로운 대안으로 각광받고 있습니다.</p>
+      <div class="highlight">
+        <h3>주요 <span style="font-weight:bold; color:#4CAF50;">포터리스</span> 선택 이유 (2026년 트렌드)</h3>
+        <ul>
+          <li><strong>초기 비용 절감:</strong> 신차 구매 시 발생하는 취득세, 등록세, 보험료 등 초기 목돈 지출 없이 월 리스료만으로 차량 운용 가능.</li>
+          <li><strong>세금 절감 효과:</strong> 개인 사업자 및 법인 사업자는 리스료 전액을 비용으로 처리하여 종합소득세 및 법인세 절감 가능.</li>
+          <li><strong>차량 관리 편리성:</strong> 리스사에서 제공하는 정비 서비스나 보험 상품을 활용하여 차량 관리의 번거로움을 줄일 수 있습니다.</li>
+          <li><strong>신차 교체 용이성:</strong> 계약 기간 만료 후 차량을 반납하고 새로운 모델로 교체하기 쉬워 감가상각의 부담이 없습니다.</li>
+        </ul>
+        <p>특히 2026년은 <span style="font-weight:bold;">포터2</span> 모델의 다양화와 <span style="font-weight:bold;">포터 전기차</span>에 대한 정부 지원금 정책 변화가 예상되는 시기입니다. 사업자에게 유리한 조건과 <span style="font-weight:bold; color:#4CAF50;">포터리스</span>의 장점을 면밀히 분석하여 최적의 선택을 하도록 돕겠습니다.</p>
+      </div>
+    </section>
+
+    <section id="models">
+      <span id="models-anchor" class="anchor"></span>
+      <h2><span style="color:#1a5a1f;">포터리스</span> 모델별 가격 및 장단점 심층 비교</h2>
+      <p>현대자동차의 <span style="font-weight:bold; color:#4CAF50;">포터</span>는 일반 트럭뿐만 아니라 다양한 특장차 모델로 출시됩니다. 각 모델은 운용 환경에 따라 장단점이 뚜렷하며, <span style="font-weight:bold;">포터리스</span> 견적 역시 모델별로 크게 차이가 납니다. <span style="font-weight:bold;">포터2</span> 신차와 <span style="font-weight:bold; color:#4CAF50;">포터 전기차</span> 모델을 중심으로 상세 비교를 진행합니다.</p>
+      
+      <h3>1. 포터2 디젤 모델 상세 분석 (포터2 슈퍼캡, 킹캡, 더블캡)</h3>
+      <p><span style="font-weight:bold; color:#4CAF50;">포터2</span> 디젤 모델은 뛰어난 내구성과 강력한 토크로 장거리 운송이나 무거운 짐을 운반하는 데 적합합니다. 특히 <span style="font-weight:bold; color:#4CAF50;">포터2 슈퍼캡</span>과 <span style="font-weight:bold; color:#4CAF50;">포터2 킹캡</span>은 넉넉한 적재 공간과 운전자 편의성을 제공하며, <span style="font-weight:bold; color:#4CAF50;">포터2 더블캡</span>은 작업 인원 수송에 유리합니다. <span style="font-weight:bold; color:#4CAF50;">포터리스</span>를 이용하면 초기 비용 부담 없이 즉시 차량을 투입할 수 있습니다.</p>
+      <ul>
+        <li><strong>포터2 슈퍼캡:</strong> 가장 일반적인 형태로, 운전석 뒤 공간에 짐을 보관하거나 잠시 휴식을 취할 수 있는 공간이 있습니다.</li>
+        <li><strong>포터2 킹캡:</strong> 슈퍼캡보다 더 넓은 후방 공간을 제공하여 장거리 운전자에게 선호도가 높습니다.</li>
+        <li><strong>포터2 더블캡:</strong> 5~6명의 인원이 탑승 가능하며, 화물 적재 공간은 줄어들지만 인력 수송에 강점을 가집니다.</li>
+      </ul>
+
+      <h3>2. 포터 전기차 (포터 EV) 모델 상세 분석</h3>
+      <p>친환경 트렌드와 정부 지원금에 힘입어 <span style="font-weight:bold; color:#4CAF50;">포터 전기차(포터 EV)</span>의 인기가 급증하고 있습니다. 특히 <span style="font-weight:bold;">포터리스</span>를 통해 <span style="font-weight:bold;">포터 전기차</span>를 이용할 경우, 보조금 혜택을 선 반영하여 월 리스료를 대폭 낮출 수 있습니다. 2026년 기준 <span style="font-weight:bold; color:#4CAF50;">포터 전기차</span>는 주로 단거리 운송이나 도심 내 물류에 최적화되어 있습니다.</p>
+      <ul>
+        <li><strong>장점:</strong> 유류비 대비 현저히 낮은 충전 비용, 고속도로 통행료 할인, 공영주차장 할인 혜택, 조용하고 부드러운 주행감.</li>
+        <li><strong>단점:</strong> 1회 충전 시 주행거리(포터 EV 주행거리) 제약, 겨울철 배터리 성능 저하, 충전 인프라 부족 문제.</li>
+      </ul>
+
+      <h3>3. 포터 특장차 모델 (냉동탑차, 윙바디 등)</h3>
+      <p>특정 업종에서는 일반 트럭이 아닌 <span style="font-weight:bold; color:#4CAF50;">포터 냉동탑차</span>나 <span style="font-weight:bold; color:#4CAF50;">포터 윙바디</span>와 같은 특장차 모델이 필요합니다. <span style="font-weight:bold;">포터리스</span>는 이러한 특장차 모델도 손쉽게 이용할 수 있도록 지원하며, <span style="font-weight:bold;">포터2 냉동탑차</span>는 신선식품 배송, <span style="font-weight:bold;">포터2 윙바디</span>는 물류 상하차 작업 효율화에 탁월합니다. <span style="font-weight:bold;">포터1</span> 모델은 단종되었지만, <span style="font-weight:bold;">포터2</span> 모델이 그 역할을 계승하고 있습니다.</p>
+
+      <div class="sub-section">
+        <h3><strong><span style="color:#1a5a1f;">포터리스</span> 모델별 예상 월 비용 비교표 (2026년 기준)</strong></h3>
+        <table>
+          <thead>
+            <tr>
+              <th>구분</th>
+              <th>주요 특징</th>
+              <th>2026년 신차 가격대 (예상)</th>
+              <th><span style="font-weight:bold;">포터리스</span> 예상 월 비용 (보증금 0% 기준)</th>
+              <th>추천 업종</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>포터2 디젤 (슈퍼캡)</strong></td>
+              <td>가장 일반적인 1톤 트럭, 강력한 힘, 장거리 운송</td>
+              <td>1,900만원 ~ 2,500만원</td>
+              <td>25만원 ~ 35만원</td>
+              <td>택배, 용달, 농수산물 운송</td>
+            </tr>
+            <tr>
+              <td><strong>포터 전기차 (포터 EV)</strong></td>
+              <td>정부 보조금 혜택, 낮은 유류비, 친환경 운행</td>
+              <td>4,000만원 ~ 4,500만원 (보조금 전)</td>
+              <td>30만원 ~ 40만원 (보조금 후)</td>
+              <td>도심 물류, 퀵서비스, 식자재 배달</td>
+            </tr>
+            <tr>
+              <td><strong>포터2 냉동탑차</strong></td>
+              <td>냉장/냉동 기능 특화, 신선물품 운송 필수</td>
+              <td>2,800만원 ~ 3,500만원</td>
+              <td>40만원 ~ 50만원</td>
+              <td>정육점, 식당 납품, 프랜차이즈 물류</td>
+            </tr>
+          </tbody>
+        </table>
+        <p><em>*2026년 기준 신차 가격, 정부 보조금, <span style="font-weight:bold;">포터리스</span> 업체 및 계약 조건에 따라 견적 금액은 변동될 수 있습니다. 자세한 <span style="font-weight:bold;">포터2 가격</span> 및 <span style="font-weight:bold;">포터 전기차 가격</span>은 견적 상담을 통해 확인하세요.</em></p>
+      </div>
+    </section>
+
+    <section id="finance">
+      <span id="finance-anchor" class="anchor"></span>
+      <h2><span style="color:#1a5a1f;">포터리스</span> VS <span style="color:#1a5a1f;">포터 렌탈</span> VS <span style="color:#1a5a1f;">포터 할부</span>: 장단점 비교 및 최적의 선택은?</h2>
+      <p>많은 사업자들이 <span style="font-weight:bold;">포터2</span> 차량 운용 방식을 놓고 고민합니다. <span style="font-weight:bold; color:#4CAF50;">포터리스</span>, 장기 렌터카, 할부 구매 중 어떤 방식이 가장 유리할까요? 각 방식의 <span style="font-weight:bold;">장단점</span>과 <span style="font-weight:bold;">차이점</span>을 상세히 비교하여 고객님의 상황에 맞는 최적의 금융 상품을 추천해 드립니다.</p>
+
+      <h3>1. 포터리스 (Lease)</h3>
+      <p><span style="font-weight:bold;">포터리스</span>는 금융기관이 차량을 구매하여 고객에게 일정 기간 동안 사용료를 받고 빌려주는 방식입니다. 차량 소유권은 리스 회사에 있으며, 고객은 차량 사용 권한을 가집니다. 일반적으로 <span style="font-weight:bold;">포터2</span>나 <span style="font-weight:bold;">포터 전기차</span>를 장기간 운용할 계획이 있는 사업자에게 유리합니다.</p>
+      <div class="sub-section">
+        <p><strong>주요 장점:</strong></p>
+        <ul>
+          <li><strong>절세 효과 극대화:</strong> 리스료 전액을 사업상 비용으로 처리 가능하여 종합소득세 절감 효과가 높습니다. (경차 1천만원, 승합차 1천 5백만원 한도와 별도로 적용될 수 있습니다.)</li>
+          <li><strong>번호판:</strong> 일반 자가용 번호판을 사용합니다.</li>
+          <li><strong>초기 비용 부담 감소:</strong> 선수금이나 보증금 비율을 0%로 설정 가능하여 초기 목돈 지출을 줄일 수 있습니다.</li>
+          <li><strong>신용 등급 영향:</strong> 대출 상품이 아니므로 신용 점수 하락이 렌탈에 비해 적습니다.</li>
+        </ul>
+        <p><strong>주요 단점:</strong></p>
+        <ul>
+          <li><strong>보험료:</strong> 개인 보험 경력이 적용되어 보험료가 비쌀 수 있습니다.</li>
+          <li><strong>중도 해지 수수료:</strong> 계약 기간 내 해지 시 위약금이 높게 책정될 수 있습니다.</li>
+        </ul>
+      </div>
+
+      <h3>2. 포터 장기 렌탈 (Rental)</h3>
+      <p>장기 렌탈은 렌터카 회사로부터 차량을 빌리는 방식입니다. <span style="font-weight:bold;">포터리스</span>와 유사하지만, 차량 소유권이 렌터카 회사에 있다는 점과 번호판이 '하, 허, 호'로 시작한다는 차이가 있습니다. <span style="font-weight:bold; color:#4CAF50;">포터2</span> 중고차 시장에서도 <span style="font-weight:bold;">포터 렌탈</span> 차량이 종종 나옵니다.</p>
+      <div class="sub-section">
+        <p><strong>주요 장점:</strong></p>
+        <ul>
+          <li><strong>보험료 포함:</strong> 리스료에 보험료가 포함되어 있어, 보험 경력이 짧거나 사고 이력이 많은 고객에게 유리합니다.</li>
+          <li><strong>간편한 관리:</strong> 렌터카 회사에서 차량 정비, 소모품 교체 등의 서비스를 제공하여 관리가 편리합니다.</li>
+          <li><strong>신용 등급 영향:</strong> 리스 대비 대출로 분류될 수 있어 신용도에 미치는 영향이 있을 수 있습니다.</li>
+        </ul>
+        <p><strong>주요 단점:</strong></p>
+        <ul>
+          <li><strong>번호판:</strong> '하, 허, 호' 번호판 사용에 대한 거부감이 있을 수 있습니다.</li>
+          <li><strong>총 비용:</strong> 리스 대비 총 운용 비용이 다소 높을 수 있습니다.</li>
+        </ul>
+      </div>
+
+      <h3>3. 포터 할부 (Installment Purchase)</h3>
+      <p>할부 구매는 차량을 직접 구매하고 일정 기간 동안 할부금을 납부하는 방식입니다. 차량 소유권이 고객에게 있기 때문에 차량에 대한 완전한 권한을 가집니다. <span style="font-weight:bold;">포터2</span> 신차 구매 시 가장 전통적인 방식입니다.</p>
+      <div class="sub-section">
+        <p><strong>주요 장점:</strong></p>
+        <ul>
+          <li><strong>소유권:</strong> 차량을 온전히 소유하여 자유롭게 처분하거나 개조(튜닝)가 가능합니다.</li>
+          <li><strong>금융 비용:</strong> 장기 리스/렌탈 대비 총 이자 비용이 낮을 수 있습니다.</li>
+        </ul>
+        <p><strong>주요 단점:</strong></p>
+        <ul>
+          <li><strong>세금 부담:</strong> 취득세, 등록세 등 초기 비용을 일시불로 납부해야 합니다.</li>
+          <li><strong>감가상각:</strong> 중고차 시장 가치 하락에 대한 위험을 고객이 모두 부담합니다.</li>
+          <li><strong>자산 반영:</strong> 차량이 자산으로 잡히므로 건강보험료 상승의 원인이 될 수 있습니다.</li>
+        </ul>
+      </div>
+      <p style="text-align:center; margin-top:20px;"><strong>결론:</strong> <span style="font-weight:bold;">포터리스</span>는 초기 비용 부담을 최소화하고 절세 효과를 원하는 사업자에게, <span style="font-weight:bold;">포터 할부</span>는 차량을 장기적으로 소유하고 싶은 고객에게 유리합니다. <span style="font-weight:bold;">포터 렌탈</span>은 관리가 편리하고 보험료 부담을 줄이고자 하는 고객에게 적합합니다.</p>
+    </section>
+
+    <section id="pros_cons">
+      <span id="pros_cons-anchor" class="anchor"></span>
+      <h2><span style="color:#1a5a1f;">포터리스</span> 장단점 상세 분석: 내돈내산 후기와 비교</h2>
+      <p>인터넷 커뮤니티나 <span style="font-weight:bold;">유튜브</span> 채널에서 <span style="font-weight:bold;">포터리스</span>에 대한 <span style="font-weight:bold;">후기</span>와 <span style="font-weight:bold;">내돈내산</span> 리뷰를 찾아보면, <span style="font-weight:bold;">포터2</span> 모델별 운용 경험에 따른 다양한 평가가 있습니다. 특히 <span style="font-weight:bold;">포터 전기차</span>는 장거리 운행에 대한 <span style="font-weight:bold;">단점</span>과 보조금 혜택에 대한 <span style="font-weight:bold;">장점</span>이 극명하게 갈립니다. 전문가의 입장에서 <span style="font-weight:bold;">포터리스</span>의 현실적인 <span style="font-weight:bold;">장단점</span>을 정리했습니다.</p>
+
+      <h3>포터리스의 현실적인 장점</h3>
+      <ol>
+        <li><strong>현금 지원 및 할인 혜택:</strong> <span style="font-weight:bold;">포터리스</span> 전문 업체들은 신규 고객 유치를 위해 <span style="font-weight:bold;">현금 지원</span>, <span style="font-weight:bold;">상품권</span>, <span style="font-weight:bold;">주유권</span> 등 다양한 <span style="font-weight:bold;">신규 가입 혜택</span>을 제공합니다. 이는 실제 초기 비용 절감으로 이어집니다.</li>
+        <li><strong>포터 EV 보조금 선반영:</strong> <span style="font-weight:bold;">포터 전기차</span> 구매 시 정부 보조금 신청 절차가 복잡하고 시간이 오래 걸립니다. 하지만 <span style="font-weight:bold;">포터리스</span>를 이용하면 리스 업체가 보조금을 대신 신청하고 월 리스료에 선반영해주기 때문에, 고객은 번거로움 없이 낮은 비용으로 차량을 운용할 수 있습니다.</li>
+        <li><strong>관리 용이성:</strong> <span style="font-weight:bold;">포터2</span>는 짐차 특성상 일반 승용차보다 사고 위험이 높고 소모품 교체 주기가 짧습니다. 리스 계약 시 정비 옵션을 추가하면 정기 점검과 소모품 교체를 리스 업체가 책임지므로, 운전자는 오로지 운전에만 집중할 수 있습니다.</li>
+      </ol>
+
+      <h3>포터리스의 현실적인 단점 및 주의사항</h3>
+      <ol>
+        <li><strong>총비용 측면의 단점:</strong> <span style="font-weight:bold;">포터리스</span>는 월 비용이 저렴해 보이지만, 장기간 운용할 경우 할부 구매 대비 총 이자율이 높을 수 있습니다. 계약 기간, 잔존가치, 금리를 꼼꼼하게 비교해야 합니다.</li>
+        <li><strong>주행거리 제한:</strong> 대부분의 <span style="font-weight:bold;">포터리스</span> 계약은 연간 주행거리 제한(예: 2만 km/년)이 있습니다. 주행거리 초과 시 추가 요금이 발생하므로, 주행량이 많은 고객은 무제한 상품이나 주행거리가 긴 상품을 선택해야 합니다.</li>
+        <li><strong>중도 해지 페널티:</strong> 사업 상황이 바뀌어 계약 기간을 채우지 못하고 <span style="font-weight:bold;">포터리스</span> 계약을 해지하면 높은 위약금이 발생합니다. <span style="font-weight:bold; color:#4CAF50;">포터리스</span> 계약은 신중하게 결정해야 합니다.</li>
+      </ol>
+
+      <div class="highlight">
+        <h3><strong><span style="color:#1a5a1f;">포터 전기차</span> 운용의 핵심 단점: 배터리 관리 (2026년)</strong></h3>
+        <p>많은 <span style="font-weight:bold; color:#4CAF50;">포터 EV</span> 운전자들이 공통적으로 언급하는 <span style="font-weight:bold;">단점</span>은 겨울철 배터리 성능 저하입니다. 겨울에는 주행거리가 30% 이상 감소할 수 있어, 장거리 운송이나 물류 업무에 큰 지장을 줄 수 있습니다. <span style="font-weight:bold;">포터 전기차</span> <span style="font-weight:bold;">리스</span> 시에는 충전 인프라와 운행 패턴을 면밀히 분석해야 합니다.</p>
+      </div>
+    </section>
+
+    <section id="review">
+      <span id="review-anchor" class="anchor"></span>
+      <h2><span style="color:#1a5a1f;">포터리스</span>, 현명하게 이용하는 팁: 내돈내산 후기 기반</h2>
+      <p>실제 <span style="font-weight:bold;">포터리스</span>를 이용하는 사용자들의 <span style="font-weight:bold;">내돈내산</span> 후기와 경험을 바탕으로, 계약 전 반드시 확인해야 할 사항들을 정리했습니다. 단순한 <span style="font-weight:bold;">포터2 가격</span> 비교를 넘어, <span style="font-weight:bold; color:#4CAF50;">포터리스</span>를 통해 최고의 효율을 얻는 방법을 알아봅시다.</p>
+
+      <h3>1. <span style="color:#1a5a1f;">포터리스</span> 견적 비교: 저렴한 곳을 찾는 팁</h3>
+      <p><span style="font-weight:bold;">포터리스</span>는 금융 상품이기 때문에, 리스 업체별로 금리(이자율)와 <span style="font-weight:bold;">잔존가치</span> 책정 방식이 다릅니다. 이 두 가지 요인에 따라 월 납입금이 크게 달라집니다. <span style="font-weight:bold;">포터리스 싼곳</span>, <span style="font-weight:bold;">포터리스 저렴한곳</span>을 찾기 위해 <span style="font-weight:bold;">네이버</span> 검색이나 <span style="font-weight:bold;">구글</span> 검색을 통해 여러 업체를 비교하는 것은 필수입니다. 단순히 월 납입금만 볼 것이 아니라, 총 비용과 <span style="font-weight:bold;">신규 가입 혜택</span>을 종합적으로 고려해야 합니다.</p>
+      <div class="highlight">
+        <h4><span style="color:#1a5a1f;">포터리스</span> 견적서에서 확인해야 할 3가지 핵심 요소</h4>
+        <ol>
+          <li><strong>잔존가치:</strong> 계약 만료 시 차량의 예상 가치입니다. 잔존가치가 높을수록 월 납입금은 낮아지지만, 만기 후 인수 시 부담해야 할 금액은 높아집니다. <span style="font-weight:bold;">포터2</span>는 중고차 가치가 높아 잔존가치가 높게 책정되는 경우가 많습니다.</li>
+          <li><strong>금리:</strong> <span style="font-weight:bold; color:#4CAF50;">포터리스</span>는 대출 성격의 금융 상품이므로 금리가 중요합니다. 리스사별 금리를 비교하고, <span style="font-weight:bold;">포터2 신차</span> 할부 금리와 비교하여 어떤 방식이 유리한지 판단해야 합니다.</li>
+          <li><strong>포함된 옵션 및 서비스:</strong> <span style="font-weight:bold; color:#4CAF50;">포터리스</span> 업체가 제공하는 정비 서비스, 보험 범위, <span style="font-weight:bold;">현금 지원</span> 금액을 확인해야 합니다. 일부 저렴한 견적은 필수 서비스가 제외된 경우가 많습니다.</li>
+        </ol>
+      </div>
+
+      <h3>2. 포터리스 계약 전 필수 체크리스트</h3>
+      <div class="sub-section">
+        <ol>
+          <li><strong>차량 모델 및 옵션:</strong> <span style="font-weight:bold;">포터2</span> 모델 중 <span style="font-weight:bold;">슈퍼캡</span>, <span style="font-weight:bold;">킹캡</span>, <span style="font-weight:bold;">더블캡</span>, <span style="font-weight:bold;">냉동탑차</span>, <span style="font-weight:bold;">윙바디</span> 등 본인의 용도에 맞는 모델을 정확히 결정해야 합니다. 한번 계약하면 변경이 어렵습니다.</li>
+          <li><strong>운행 주행거리:</strong> 연간 주행거리를 예측하여 계약서에 명시된 주행거리가 적절한지 확인합니다. 주행거리가 많은 고객은 <span style="font-weight:bold;">포터2 리스</span> 대신 <span style="font-weight:bold;">포터 렌탈</span> 무제한 상품을 고려하는 것이 좋습니다.</li>
+          <li><strong>만기 시점 처리 방식:</strong> 계약 만료 후 차량을 반납할지, 인수할지 미리 결정해야 합니다. <span style="font-weight:bold; color:#4CAF50;">포터리스</span>는 잔존가치를 제외한 금액을 납부하고 인수할 수 있습니다.</li>
+          <li><strong>보험료 포함 여부:</strong> <span style="font-weight:bold; color:#4CAF50;">포터리스</span>는 개인 보험, <span style="font-weight:bold;">포터 렌탈</span>은 단체 보험이 적용됩니다. 본인의 보험 경력을 고려하여 유리한 쪽을 선택합니다.</li>
+        </ol>
+      </div>
+    </section>
+
+    <section id="detailed-info">
+      <span id="detailed-info-anchor" class="anchor"></span>
+      <h2><span style="color:#1a5a1f;">포터리스</span> 심층 분석: 2026년 전기차 보조금과 시장 전망</h2>
+      <p>2026년 <span style="font-weight:bold;">포터</span> 시장은 전기차 모델 중심으로 급변하고 있습니다. 정부의 친환경차 정책 강화와 미세먼지 저감 대책으로 인해 <span style="font-weight:bold;">포터 전기차(포터 EV)</span>에 대한 지원금(보조금) 정책이 지속적으로 변화하고 있습니다. <span style="font-weight:bold; color:#4CAF50;">포터리스</span>를 고려하는 고객은 이러한 정책 변화를 면밀히 파악하여 비용 절감 기회를 놓치지 않아야 합니다.</p>
+
+      <h3>1. <span style="color:#1a5a1f;">포터 전기차</span> 보조금 현황 및 지원금 신청 팁</h3>
+      <p><span style="font-weight:bold;">포터 전기차</span>는 국고 보조금과 지방자치단체 보조금을 동시에 지원받을 수 있습니다. 2026년 기준으로 <span style="font-weight:bold;">포터 EV</span>의 국고 보조금은 전년 대비 소폭 감소했지만, 여전히 상당한 금액이 지원됩니다. 중요한 점은 <span style="font-weight:bold; color:#4CAF50;">포터리스</span>나 <span style="font-weight:bold; color:#4CAF50;">포터 렌탈</span> 계약 시 보조금을 미리 리스 업체가 수령하여 견적서에 반영한다는 것입니다. 이로 인해 고객은 초기 비용 부담 없이 낮은 월 납입금으로 <span style="font-weight:bold; color:#4CAF50;">포터 전기차</span>를 운용할 수 있습니다.</p>
+      <div class="highlight">
+        <h4><span style="color:#1a5a1f;">포터 전기차</span> 보조금 수령 시 유의사항</h4>
+        <ul>
+          <li><strong>지자체 보조금:</strong> 거주지 또는 사업장 소재지 지자체별로 보조금 금액이 다릅니다. 지자체별 보조금 소진 속도가 다르므로, <span style="font-weight:bold;">포터리스</span> 계약 시 잔여 보조금을 확인해야 합니다.</li>
+          <li><strong>의무 운행 기간:</strong> 보조금을 받고 <span style="font-weight:bold;">포터 전기차</span>를 구매하거나 <span style="font-weight:bold;">포터리스</span> 계약을 할 경우 일정 기간 의무적으로 운행해야 합니다. 중도 매각 시 보조금이 환수될 수 있습니다.</li>
+        </ul>
+      </div>
+
+      <h3>2. <span style="color:#1a5a1f;">포터리스</span> 시장의 미래: 중고차 시장과 연계</h3>
+      <p><span style="font-weight:bold;">포터2</span>는 중고차 시장에서도 인기가 매우 높습니다. <span style="font-weight:bold; color:#4CAF50;">포터리스</span> 계약 만료 후 차량을 인수할지 반납할지 결정할 때, <span style="font-weight:bold;">포터2 중고</span> 시세를 정확히 파악하는 것이 중요합니다. 특히 <span style="font-weight:bold; color:#4CAF50;">포터2 냉동탑차</span>나 <span style="font-weight:bold; color:#4CAF50;">포터2 더블캡</span>과 같은 특수 모델은 중고 시장에서의 수요와 공급에 따라 잔존가치가 크게 변동될 수 있습니다.</p>
+      <p>리스 업체의 잔존가치 책정은 <span style="font-weight:bold; color:#4CAF50;">포터리스</span> 견적의 핵심입니다. 잔존가치를 낮게 책정하면 월 납입금이 올라가지만 만기 후 인수 금액이 저렴해지며, 잔존가치를 높게 책정하면 월 납입금은 낮아지지만 만기 시 인수 금액이 높아집니다. <span style="font-weight:bold;">포터2</span> <span style="font-weight:bold;">중고</span> 시세에 대한 정확한 분석을 통해 만기 후 처리 계획을 세워야 합니다.</p>
+
+      <h3>3. <span style="color:#1a5a1f;">포터리스</span> 계약 시 주의해야 할 '숨겨진' 비용</h3>
+      <p>겉으로 보이는 <span style="font-weight:bold;">포터리스</span> 월 납입금 외에도 숨겨진 비용이 있을 수 있습니다. <span style="font-weight:bold;">포터리스</span> <span style="font-weight:bold;">업체</span>를 비교할 때 <span style="font-weight:bold;">가격</span>이 가장 저렴한 곳이 무조건 좋다고 할 수 없는 이유입니다. <span style="font-weight:bold;">포터2</span> <span style="font-weight:bold;">신차</span> 계약 시 다음 사항을 반드시 확인하세요:</p>
+      <ul>
+        <li><strong>보험 조건:</strong> 리스 계약 시 차량 보험을 개인적으로 가입해야 하는데, 보험료가 월 리스료에 포함되지 않는 경우가 많습니다. <span style="font-weight:bold;">포터2</span> 보험료는 운전자 경력에 따라 크게 달라지므로, 사전에 정확히 확인해야 합니다.</li>
+        <li><strong>정비 옵션:</strong> 정비 포함 여부에 따라 월 납입금이 달라집니다. <span style="font-weight:bold;">포터2</span>는 주행거리가 길어 소모품 교체가 잦으므로, 정비 옵션을 포함할지 신중하게 결정해야 합니다.</li>
+        <li><strong>연체 이자율:</strong> 월 리스료 연체 시 부과되는 이자율을 확인하세요. 리스료 연체는 신용 등급 하락에 직접적인 영향을 미칩니다.</li>
+      </ul>
+
+      <p><strong><span style="font-weight:bold;">포터리스</span> 업체 순위 및 비교:</strong> <span style="font-weight:bold;">네이버</span>, <span style="font-weight:bold;">구글</span>, <span style="font-weight:bold;">유튜브</span>에서 <span style="font-weight:bold;">포터리스 업체 순위</span>를 검색할 수 있지만, 리스 상품은 개인 조건에 따라 유리한 곳이 달라집니다. 한 곳의 견적만 받지 말고, 여러 업체의 견적을 비교하는 것이 <span style="font-weight:bold;">포터리스</span> 계약의 핵심입니다.</p>
+    </section>
+
+    <section id="contact">
+      <span id="contact-anchor" class="anchor"></span>
+      <h2><span style="color:#1a5a1f;">포터리스</span> 전문가와 상담하기: 맞춤 견적 및 <span style="color:#1a5a1f;">현금 지원</span> 혜택 확인</h2>
+      <p>고객님의 사업 규모, 운행 목적, 희망 모델(포터2 디젤, 포터 전기차, 냉동탑차 등), 희망 계약 기간을 정확히 알려주시면 <span style="font-weight:bold;">포터리스</span> 전문가가 최적의 맞춤 견적을 제공해드립니다. 견적 상담을 통해 불필요한 비용을 줄이고 <span style="font-weight:bold;">현금 지원</span> 혜택을 극대화하세요.</p>
+      <form action="/submit" method="POST" style="max-width:700px; margin:auto; padding:20px; border:1px solid #e0e6ec; border-radius:8px; background:#f9f9f9;">
+        <div class="form-group">
+          <label for="name">이름<span style="color:red;">*</span></label>
+          <input type="text" id="name" name="name" required placeholder="예: 홍길동" />
+        </div>
+        <div class="form-group">
+          <label for="phone">연락처<span style="color:red;">*</span></label>
+          <input type="tel" id="phone" name="phone" required placeholder="010-1234-5678" pattern="[0-9\-]+" />
+        </div>
+        <div class="form-group">
+          <label for="company_type">사업자 구분<span style="color:red;">*</span></label>
+          <select id="company_type" name="company_type" required>
+            <option value="">선택하세요</option>
+            <option value="개인사업자">개인사업자</option>
+            <option value="법인사업자">법인사업자</option>
+            <option value="개인">개인 (비사업자)</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="desired_model">희망 차량 모델<span style="color:red;">*</span></label>
+          <select id="desired_model" name="desired_model" required>
+            <option value="">선택하세요</option>
+            <option value="포터2_디젤">포터2 디젤 (슈퍼캡/킹캡)</option>
+            <option value="포터2_더블캡">포터2 더블캡</option>
+            <option value="포터_전기차">포터 전기차 (포터 EV)</option>
+            <option value="포터_냉동탑차">포터2 냉동탑차</option>
+            <option value="포터_윙바디">포터2 윙바디</option>
+            <option value="기타">기타 특수 모델</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="finance_type">희망 금융 상품 유형<span style="color:red;">*</span></label>
+          <select id="finance_type" name="finance_type" required>
+            <option value="">선택하세요</option>
+            <option value="리스">리스 (Lease)</option>
+            <option value="장기렌트">장기 렌탈 (Rental)</option>
+            <option value="할부구매">할부 구매</option>
+            <option value="모름">전문가 추천 요청</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="lease_term">희망 계약 기간 (개월)</label>
+          <input type="number" id="lease_term" name="lease_term" min="12" max="60" placeholder="예: 48개월" />
+        </div>
+        <div class="form-group">
+          <label for="desired_options">필요한 특수 옵션 또는 서비스</label>
+          <textarea id="desired_options" name="desired_options" rows="3" placeholder="예: 냉동탑차, 리프트 장착, 무제한 주행거리 옵션 희망"></textarea>
+        </div>
+        <div class="form-group">
+          <label for="note">추가 요청 사항</label>
+          <textarea id="note" name="note" rows="4" placeholder="예: 포터2 신차 vs 중고차 가격 비교 희망, 포터리스 현금 지원 금액 문의"></textarea>
+        </div>
+        <button type="submit" class="btn-cta">견적 문의 보내기</button>
+      </form>
+    </section>
+
+    <section id="external-info">
+      <span id="external-info-anchor" class="anchor"></span>
+      <h2><span style="color:#1a5a1f;">포터리스</span> 관련 공공 정보 및 외부 신뢰 사이트 참조</h2>
+      <p>신뢰할 수 있는 정보를 바탕으로 현명한 <span style="font-weight:bold;">포터리스</span> 결정을 내리세요. <span style="font-weight:bold;">포터2</span>, <span style="font-weight:bold;">포터 전기차</span> 관련 정책 및 소비자 보호 정보를 제공하는 공신력 있는 외부 사이트 목록입니다.</p>
+      <ul>
+        <li><strong>한국소비자원:</strong> <a href="https://www.kca.go.kr" target="_blank">리스/렌탈 관련 소비자 피해 구제 정보 (kca.go.kr)</a></li>
+        <li><strong>국토교통부:</strong> <a href="https://www.molit.go.kr" target="_blank">화물자동차 운수사업 관련 법규 및 정책 정보 (molit.go.kr)</a></li>
+        <li><strong>환경부(무공해차 통합누리집):</strong> <a href="https://www.ev.or.kr" target="_blank">포터 전기차 보조금 현황 및 지원 정책 (ev.or.kr)</a></li>
+        <li><strong>한국자동차산업협회(KAMA):</strong> <a href="https://www.kama.or.kr" target="_blank">자동차 판매 및 생산 통계 (kama.or.kr)</a></li>
+        <li><strong>네이버 지식백과:</strong> <a href="https://terms.naver.com" target="_blank">자동차 리스 및 렌터카 개념 정의 (terms.naver.com)</a></li>
+        <li><strong>나무위키:</strong> <a href="https://namu.wiki/w/%ED%8F%AC%ED%84%B0" target="_blank">포터(Porter) 모델 역사 및 제원 (namu.wiki)</a></li>
+      </ul>
+    </section>
+  </main>
+
+  <!-- 이미지 삽입 (Pexels에서 상업적 이용 가능 이미지 검색: "truck", "commercial vehicle", "delivery") -->
+  <div class="image-container">
+    <img src="https://images.pexels.com/photos/15701831/pexels-photo-15701831.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="배송용 트럭이 주차된 모습, 포터리스와 관련된 이미지" />
+    <p style="font-size:0.8rem; color:#888;">출처: Pexels.com (이미지 사용: 상업적 이용 가능)</p>
+  </div>
+
+  
